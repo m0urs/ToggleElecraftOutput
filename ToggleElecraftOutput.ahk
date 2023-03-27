@@ -15,20 +15,22 @@
 ; script only as an example!
 ;
 ; Creator:  Michael Urspringer (DG3NAB)
-; Version:  1.0
+; Version:  1.1
 ;###################################################################################
 
 ; Open Windows Sound Preferences
 Run, mmsys.cpl,,UseErrorLevel,soundpid
 
 ; Wait until the window has been opened and make sure it is the active window
-WinWait ahk_pid %soundpid%,,2
+WinWait, Sound,,5
 
-if not WinExist("Sound","Wiedergabe")
+if not WinExist("Sound","Wiedergabe") or ErrorLevel
     {
     MsgBox, Sound preferences could not be opened. Script will be aborted.
     Exit, 1
-    }    
+    }
+Else
+    WinActivate
 
 ; Now send the necessary keystrokes to perform the task (needs to be adapted to your environment!):
 
