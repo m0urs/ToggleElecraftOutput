@@ -14,9 +14,25 @@
 ; Caution: You need to adapt the keystrokes to your environment, so please use the
 ; script only as an example!
 ;
+; To compile that script to an EXE file use "C:\Program Files\AutoHotkey\Compiler\Ahk2Exe.exe"
+;
 ; Creator:  Michael Urspringer (DG3NAB)
-; Version:  1.1
+; Version:  1.1a
 ;###################################################################################
+
+; Function to get the currently selected text
+GetSelectedText() {
+    tmp = %ClipboardAll% ; save clipboard
+    Clipboard := "" ; clear clipboard
+    Send, ^c ; simulate Ctrl+C (=selection in clipboard)
+    ClipWait, 0, 1 ; wait until clipboard contains data
+    selection = %Clipboard% ; save the content of the clipboard
+    Clipboard = %tmp% ; restore old content of the clipboard
+    return selection
+    }
+
+; The device name of the device you want to modify later (only used to check if the correct device is selected)
+devicename := "Elecraft KX2-ST"
 
 ; Open Windows Sound Preferences
 Run, mmsys.cpl,,UseErrorLevel,soundpid
@@ -39,15 +55,19 @@ Send, ^{Tab}
 Sleep 200
 
 ; Change to device "Elecraft KX2 (from TRX)
-Send, {Down}
+Send, {End}
 Sleep 200
-Send, {Down}
-Sleep 200
-Send, {Down}
 
 ; Select this device
 Sleep 200
 Send, {Space}
+
+; Check if it is the correct device
+if (GetSelectedText() != devicename) or ErrorLevel
+    {
+    MsgBox, Sound preferences could not be opened. Script will be aborted. %result%
+    Exit, 1
+    }
 
 ; Switch to tab "Abhören"
 Sleep 200
