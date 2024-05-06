@@ -55,7 +55,7 @@ Send, ^{Tab}
 Sleep 200
 
 ; Change to device "Elecraft KX2 (from TRX)
-Send, {Pos1}
+Send, {Home}
 Sleep 200
 
 ; Select this device
