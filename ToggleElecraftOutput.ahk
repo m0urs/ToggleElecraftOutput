@@ -17,7 +17,7 @@
 ; To compile that script to an EXE file use "C:\Program Files\AutoHotkey\Compiler\Ahk2Exe.exe"
 ;
 ; Creator:  Michael Urspringer (DG3NAB)
-; Version:  1.1a
+; Version:  1.1b
 ;###################################################################################
 
 ; Function to get the currently selected text
@@ -32,7 +32,7 @@ GetSelectedText() {
     }
 
 ; The device name of the device you want to modify later (only used to check if the correct device is selected)
-devicename := "Elecraft KX2-ST"
+devicename := "Elecraft KX2"
 
 ; Open Windows Sound Preferences
 Run, mmsys.cpl,,UseErrorLevel,soundpid
@@ -55,7 +55,7 @@ Send, ^{Tab}
 Sleep 200
 
 ; Change to device "Elecraft KX2 (from TRX)
-Send, {End}
+Send, {Pos1}
 Sleep 200
 
 ; Select this device
