@@ -54,8 +54,10 @@ Else
 Send, ^{Tab}
 Sleep 200
 
-; Change to device "Elecraft KX2 (from TRX)
+; Change to device "Elecraft KX2"
 Send, {Home}
+Sleep 200
+Send, {Down}
 Sleep 200
 
 ; Select this device
