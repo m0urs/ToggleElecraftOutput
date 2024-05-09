@@ -17,7 +17,7 @@
 ; To compile that script to an EXE file use "C:\Program Files\AutoHotkey\Compiler\Ahk2Exe.exe"
 ;
 ; Creator:  Michael Urspringer (DG3NAB)
-; Version:  1.1b
+; Version:  1.1c
 ;###################################################################################
 
 ; Function to get the currently selected text
@@ -55,6 +55,8 @@ Send, ^{Tab}
 Sleep 200
 
 ; Change to device "Elecraft KX2"
+Send, {Down}
+Sleep 200
 Send, {Home}
 Sleep 200
 Send, {Down}
